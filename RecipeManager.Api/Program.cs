@@ -8,6 +8,10 @@ builder.Services.AddSqlite<RecipeManagerContext>(
 
 var app = builder.Build();
 
+using var scope = app.Services.CreateAsyncScope();
+var db = scope.ServiceProvider.GetRequiredService<RecipeManagerContext>();
+await DataSeeder.SeedDatabaseAsync(db);
+
 
 app.MapGet("/", () => "Hello World!");
 
