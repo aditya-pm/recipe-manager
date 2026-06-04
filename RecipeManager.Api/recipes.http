@@ -1,1 +1,49 @@
 GET http://localhost:5274/
+
+###
+GET http://localhost:5274/api/categories/
+
+###
+GET http://localhost:5274/api/categories/3
+
+###
+GET http://localhost:5274/api/tags
+
+###
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Biryani",
+    "ingredients": [
+        {
+            "ingredientName": "Chicken",
+            "quantity": 500,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Rice",
+            "quantity": 300,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Salt",
+            "quantity": 1,
+            "unit": "tsp"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Wash the rice."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Cook the chicken."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Combine rice and chicken and cook until done."
+        }
+    ]
+}
