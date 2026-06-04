@@ -33,13 +33,27 @@ app.MapGet("/api/categories/{id}", async (int id, RecipeManagerContext db) =>
 // POST
 app.MapPost("/api/recipes", async (CreateRecipeRequest recipeDto, RecipeManagerContext db) =>
 {
+    // Ensure every requested category exists.
+    // Missing categories will not be returned by the query below
+    // causing the counts to differ.
     var categories = await db.Categories
         .Where(c => recipeDto.Categories.Contains(c.CategoryName))
         .ToListAsync();
 
+    if (categories.Count != recipeDto.Categories.Count)
+    {
+        return Results.BadRequest("One or more categories do not exist");
+    }
+
+    // Similar to categories
     var tags = await db.Tags
         .Where(t => recipeDto.Tags.Contains(t.TagName))
         .ToListAsync();
+
+    if (tags.Count != recipeDto.Tags.Count)
+    {
+        return Results.BadRequest("One or more tags do not exist");
+    }
 
     var recipe = new Recipe
     {
@@ -65,6 +79,8 @@ app.MapPost("/api/recipes", async (CreateRecipeRequest recipeDto, RecipeManagerC
 
     await db.Recipes.AddAsync(recipe);
     await db.SaveChangesAsync();
+
+    return Results.Created($"/api/recipes/{recipe.RecipeId}",recipe);
 });
 
 app.Run();
