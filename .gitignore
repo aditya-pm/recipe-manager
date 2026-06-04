@@ -1,0 +1,66 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Visual Studio
+.vs/
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# JetBrains Rider caches
+*.sln.iml
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+
+# Test results
+TestResults/
+*.trx
+
+# Coverage reports
+coverage/
+coverage.xml
+
+# Publish output
+publish/
+
+# SQLite databases
+*.db
+*.db-shm
+*.db-wal
+
+# Local development settings
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node (if you add React later)
+node_modules/
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Generated files
+Generated/
+
+# Environment files
+.env
+.env.*
