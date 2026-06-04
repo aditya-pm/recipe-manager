@@ -38,12 +38,9 @@ coverage.xml
 publish/
 
 # SQLite databases
-*.db
 *.db-shm
 *.db-wal
 
-# Local development settings
-appsettings.Development.json
 
 # OS files
 .DS_Store
