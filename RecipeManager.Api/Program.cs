@@ -27,8 +27,100 @@ app.MapGet("/api/tags", async (RecipeManagerContext db) =>
 );
 
 app.MapGet("/api/categories/{id}", async (int id, RecipeManagerContext db) =>
-    await db.Categories.FindAsync(id)
-);
+{
+    Category? category = await db.Categories
+        .Include(c => c.Recipes)
+        .FirstOrDefaultAsync(c => c.CategoryId == id);
+
+    if (category is null)
+    {
+        return Results.NotFound();
+    }
+
+    return Results.Ok(
+        new CategoryResponse(
+            category.CategoryId,
+            category.CategoryName,
+            category.Recipes.Select(
+                recipe => recipe.RecipeName
+            ).ToList()
+        )
+    );
+});
+
+app.MapGet("/api/tags/{id}", async (int id, RecipeManagerContext db) =>
+{
+    Tag? tag = await db.Tags
+        .Include(t => t.Recipes)
+        .FirstOrDefaultAsync(t => t.TagId == id);
+
+    if (tag is null)
+    {
+        return Results.NotFound();
+    }
+
+    return Results.Ok(
+        new TagResponse(
+            tag.TagId,
+            tag.TagName,
+            tag.Recipes.Select(
+                r => r.RecipeName
+            ).ToList()
+        )
+    );
+});
+
+app.MapGet("/api/recipes/{id}", async (int id, RecipeManagerContext db) =>
+{
+    var recipe = await db.Recipes
+        .Include(recipe => recipe.Ingredients)
+        .Include(recipe => recipe.Instructions)
+        .Include(recipe => recipe.Categories)
+        .Include(recipe => recipe.Tags)
+        .FirstOrDefaultAsync(recipe => recipe.RecipeId == id);
+
+    if (recipe is null)
+    {
+        return Results.NotFound();
+    }
+
+    var response = new RecipeResponse(
+        recipe.RecipeId,
+        recipe.RecipeName,
+        recipe.Ingredients.Select(
+            i => new IngredientResponse(
+                i.Name,
+                i.Quantity,
+                i.Unit
+            )
+        ).ToList(),
+        recipe.Instructions.Select(
+            i => new InstructionResponse(
+                i.StepNumber,
+                i.Description
+            )
+        ).ToList(),
+        recipe.Categories.Select(
+            c => c.CategoryName
+        ).ToList(),
+        recipe.Tags.Select(
+            t => t.TagName
+        ).ToList()
+    );
+
+    return Results.Ok(response);
+});
+
+app.MapGet("/api/recipes", async (RecipeManagerContext db) =>
+{
+    var recipes = await db.Recipes.Select(recipe => new
+    {
+        recipe.RecipeId,
+        recipe.RecipeName
+    }).ToListAsync();
+
+    return Results.Ok(recipes);
+});
 
 // POST
 app.MapPost("/api/recipes", async (CreateRecipeRequest recipeDto, RecipeManagerContext db) =>
@@ -80,7 +172,38 @@ app.MapPost("/api/recipes", async (CreateRecipeRequest recipeDto, RecipeManagerC
     await db.Recipes.AddAsync(recipe);
     await db.SaveChangesAsync();
 
-    return Results.Created($"/api/recipes/{recipe.RecipeId}",recipe);
+    return Results.Created($"/api/recipes/{recipe.RecipeId}", new RecipeResponse(
+        recipe.RecipeId,
+        recipe.RecipeName,
+        recipe.Ingredients.Select(
+            ingredient => new IngredientResponse(
+                ingredient.Name,
+                ingredient.Quantity,
+                ingredient.Unit
+            )
+        ).ToList(),
+        recipe.Instructions.Select(
+            instruction => new InstructionResponse(
+                instruction.StepNumber,
+                instruction.Description
+            )
+        ).ToList(),
+        recipe.Categories.Select(category => category.CategoryName).ToList(),
+        recipe.Tags.Select(tag => tag.TagName).ToList()
+    ));
+});
+
+// DELETE
+app.MapDelete("/api/recipes/{id}", async (int id, RecipeManagerContext db) =>
+{
+    var recipe = await db.Recipes.FindAsync(id);
+    if (recipe is null)
+    {
+        return Results.NotFound();
+    }
+    db.Recipes.Remove(recipe);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
 });
 
 app.Run();

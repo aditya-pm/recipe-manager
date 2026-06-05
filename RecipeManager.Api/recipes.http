@@ -4,10 +4,19 @@ GET http://localhost:5274/
 GET http://localhost:5274/api/categories/
 
 ###
-GET http://localhost:5274/api/categories/3
+GET http://localhost:5274/api/categories/5
 
 ###
 GET http://localhost:5274/api/tags
+
+###
+GET http://localhost:5274/api/tags/1
+
+###
+GET http://localhost:5274/api/recipes/8
+
+###
+GET http://localhost:5274/api/recipes
 
 ###
 POST http://localhost:5274/api/recipes
@@ -25,11 +34,6 @@ Content-Type: application/json
             "ingredientName": "Rice",
             "quantity": 300,
             "unit": "g"
-        },
-        {
-            "ingredientName": "Salt",
-            "quantity": 1,
-            "unit": "tsp"
         }
     ],
     "instructions": [
@@ -40,10 +44,16 @@ Content-Type: application/json
         {
             "stepNumber": 2,
             "description": "Cook the chicken."
-        },
-        {
-            "stepNumber": 3,
-            "description": "Combine rice and chicken and cook until done."
         }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Indian",
+        "Easy"
     ]
 }
+
+###
+DELETE  http://localhost:5274/api/recipes/8
