@@ -19,11 +19,23 @@ await DataSeeder.SeedDatabaseAsync(dbContext);
 app.MapGet("/", () => "Hello World!");
 
 app.MapGet("/api/categories", async (RecipeManagerContext db) =>
-    await db.Categories.ToListAsync()
+    await db.Categories.Select(
+        category => new
+        {
+            category.CategoryId,
+            category.CategoryName
+        }
+    ).ToListAsync()
 );
 
 app.MapGet("/api/tags", async (RecipeManagerContext db) =>
-    await db.Tags.ToListAsync()
+    await db.Tags.Select(
+        tag => new
+        {
+            tag.TagId,
+            tag.TagName
+        }
+    ).ToListAsync()
 );
 
 app.MapGet("/api/categories/{id}", async (int id, RecipeManagerContext db) =>
