@@ -205,15 +205,59 @@ app.MapPost("/api/recipes", async (CreateRecipeRequest recipeDto, RecipeManagerC
     ));
 });
 
+app.MapPost("/api/categories/", async (CreateCategoryRequest categoryDto, RecipeManagerContext db) =>
+{
+    Category category = new() { CategoryName = categoryDto.CategoryName };
+    await db.Categories.AddAsync(category);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/categories/{category.CategoryId}", new CategoryResponse(
+        category.CategoryId, category.CategoryName, []
+    ));
+});
+
+app.MapPost("/api/tags/", async (CreateTagRequest tagDto, RecipeManagerContext db) =>
+{
+    Tag tag = new() { TagName = tagDto.TagName };
+    await db.Tags.AddAsync(tag);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/tags/{tag.TagName}", new TagResponse(
+        tag.TagId, tag.TagName, []
+    ));
+});
+
 // DELETE
 app.MapDelete("/api/recipes/{id}", async (int id, RecipeManagerContext db) =>
 {
     var recipe = await db.Recipes.FindAsync(id);
+
     if (recipe is null)
-    {
         return Results.NotFound();
-    }
+
     db.Recipes.Remove(recipe);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
+app.MapDelete("/api/categories/{id}", async (int id, RecipeManagerContext db) =>
+{
+    Category? category = await db.Categories.FindAsync(id);
+
+    if (category is null)
+        return Results.NotFound();
+    
+    db.Categories.Remove(category);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
+app.MapDelete("api/tags/{id}", async (int id, RecipeManagerContext db) =>
+{
+    Tag? tag = await db.Tags.FindAsync(id);
+
+    if (tag is null)
+        return Results.NotFound();
+
+    db.Tags.Remove(tag);
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
