@@ -54,6 +54,22 @@ public static class TagEndpoints
         });
 
 
+        tags.MapPut("/{id}", async (
+            int id,
+            CreateTagRequest tagDto,
+            RecipeManagerContext db) =>
+        {
+            Tag? tag = await db.Tags.FindAsync(id);
+
+            if (tag is null)
+                return Results.NotFound();
+
+            tag.TagName = tag.TagName;
+            await db.SaveChangesAsync();
+            return Results.NoContent();
+        });
+
+
         tags.MapDelete("/{id}", async (int id, RecipeManagerContext db) =>
         {
             Tag? tag = await db.Tags.FindAsync(id);

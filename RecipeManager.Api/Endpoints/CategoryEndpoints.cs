@@ -55,13 +55,29 @@ public static class CategoryEndpoints
         });
 
 
+        categories.MapPut("/{id}", async (
+            int id,
+            CreateCategoryRequest categoryDto,
+            RecipeManagerContext db) =>
+        {
+            Category? category = await db.Categories.FindAsync(id);
+
+            if (category is null)
+                return Results.NotFound();
+
+            category.CategoryName = categoryDto.CategoryName;
+            await db.SaveChangesAsync();
+            return Results.NoContent();
+        });
+
+
         categories.MapDelete("/{id}", async (int id, RecipeManagerContext db) =>
         {
             Category? category = await db.Categories.FindAsync(id);
 
             if (category is null)
                 return Results.NotFound();
-            
+
             db.Categories.Remove(category);
             await db.SaveChangesAsync();
             return Results.NoContent();
