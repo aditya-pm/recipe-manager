@@ -2,7 +2,7 @@
 GET http://localhost:5274/api/recipes
 
 ###
-GET http://localhost:5274/api/recipes/12
+GET http://localhost:5274/api/recipes/13
 
 ### POST 1
 POST http://localhost:5274/api/recipes
