@@ -74,9 +74,7 @@ public static class RecipeEndpoints
                 .ToListAsync();
 
             if (categories.Count != recipeDto.Categories.Count)
-            {
                 return Results.BadRequest("One or more categories do not exist");
-            }
 
             // Similar to categories
             var tags = await db.Tags
@@ -84,9 +82,7 @@ public static class RecipeEndpoints
                 .ToListAsync();
 
             if (tags.Count != recipeDto.Tags.Count)
-            {
                 return Results.BadRequest("One or more tags do not exist");
-            }
 
             var recipe = new Recipe
             {
@@ -132,6 +128,59 @@ public static class RecipeEndpoints
                 recipe.Categories.Select(category => category.CategoryName).ToList(),
                 recipe.Tags.Select(tag => tag.TagName).ToList()
             ));
+        });
+
+
+        recipes.MapPut("/{id}", async (int id, CreateRecipeRequest recipeDto, RecipeManagerContext db) =>
+        {
+            Recipe? recipe = await db.Recipes
+                .Include(r => r.Ingredients)
+                .Include(r => r.Instructions)
+                .Include(r => r.Categories)
+                .Include(r => r.Tags)
+                .FirstOrDefaultAsync(r => r.RecipeId == id);
+
+            if (recipe is null)
+                return Results.NotFound();
+
+            List<Category> categories = await db.Categories
+                .Where(c => recipeDto.Categories.Contains(c.CategoryName))
+                .ToListAsync();
+
+            if (categories.Count != recipeDto.Categories.Count)
+                return Results.BadRequest("One or more categories do not exist");
+
+            List<Tag> tags = await db.Tags 
+                .Where(t => recipeDto.Tags.Contains(t.TagName))
+                .ToListAsync();
+
+            if (tags.Count != recipeDto.Tags.Count)
+                return Results.BadRequest("One or more tags do not exist");
+
+            recipe.RecipeName = recipeDto.RecipeName;
+
+            recipe.Ingredients = recipeDto.Ingredients.Select(
+                iReponse => new RecipeIngredient
+                {
+                    Name = iReponse.IngredientName,
+                    Quantity = iReponse.Quantity,
+                    Unit = iReponse.Unit
+                }
+            ).ToList();
+
+            recipe.Instructions = recipeDto.Instructions.Select(
+                iResponse => new RecipeInstructionStep
+                {
+                    StepNumber = iResponse.StepNumber,
+                    Description = iResponse.Description
+                }
+            ).ToList();
+
+            recipe.Categories = categories;
+            recipe.Tags = tags;
+
+            await db.SaveChangesAsync();
+            return Results.NoContent();
         });
 
 
