@@ -1,0 +1,119 @@
+###
+GET http://localhost:5274/api/recipes
+
+###
+GET http://localhost:5274/api/recipes/12
+
+### POST 1
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Biryani",
+    "ingredients": [
+        {
+            "ingredientName": "Chicken",
+            "quantity": 500,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Rice",
+            "quantity": 300,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Wash the rice."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Cook the chicken."
+        }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Indian",
+        "Easy"
+    ]
+}
+
+### POST 2
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chocolate Cake",
+    "ingredients": [
+        {
+            "ingredientName": "Flour",
+            "quantity": 2,
+            "unit": "cups"
+        },
+        {
+            "ingredientName": "Sugar",
+            "quantity": 1,
+            "unit": "cup"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Mix ingredients"
+        },
+        {
+            "stepNumber": 2,
+            "description": "Bake for 30 minutes"
+        }
+    ],
+    "categories": [
+        "Dessert"
+    ],
+    "tags": [
+        "Easy"
+    ]
+}
+
+###
+PUT http://localhost:5274/api/recipes/12
+Content-Type: application/json
+
+{
+    "recipeName": "Chocolate Fudge Cake",
+    "ingredients": [
+        {
+            "ingredientName": "Flour",
+            "quantity": 3,
+            "unit": "cups"
+        },
+        {
+            "ingredientName": "Cocoa Powder",
+            "quantity": 1,
+            "unit": "cup"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Combine dry ingredients"
+        },
+        {
+            "stepNumber": 2,
+            "description": "Bake for 40 minutes"
+        }
+    ],
+    "categories": [
+        "Dessert",
+        "Quick"
+    ],
+    "tags": [
+        "Easy",
+        "Vegetarian"
+    ]
+}
+
+###
+DELETE  http://localhost:5274/api/recipes/12

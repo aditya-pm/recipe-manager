@@ -1,0 +1,24 @@
+###
+GET http://localhost:5274/api/tags
+
+###
+GET http://localhost:5274/api/tags/1
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "TestTag1"
+}
+
+###
+PUT http://localhost:5274/api/tags/6
+Content-Type: application/json
+
+{
+    "tagName": "EditedTestTag"
+}
+
+###
+DELETE http://localhost:5274/api/tags/6

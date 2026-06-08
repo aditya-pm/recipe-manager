@@ -1,0 +1,24 @@
+###
+GET http://localhost:5274/api/categories/
+
+###
+GET http://localhost:5274/api/categories/6
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "TestTag"
+}
+
+###
+PUT http://localhost:5274/api/categories/8
+Content-Type: application/json
+
+{
+    "categoryName": "EditedTestCategory"
+}
+
+###
+DELETE http://localhost:5274/api/categories/8
