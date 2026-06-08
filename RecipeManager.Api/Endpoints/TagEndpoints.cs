@@ -64,7 +64,7 @@ public static class TagEndpoints
             if (tag is null)
                 return Results.NotFound();
 
-            tag.TagName = tag.TagName;
+            tag.TagName = tagDto.TagName;
             await db.SaveChangesAsync();
             return Results.NoContent();
         });
