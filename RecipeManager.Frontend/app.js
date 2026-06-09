@@ -1,21 +1,22 @@
-async function loadRecipes() {
-    const response = await fetch("http://localhost:5274/api/recipes");
-    const recipes = await response.json();
+// DOM elements
+const searchBox = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+const recipeContainer = document.getElementById("recipes");
+const resultHeading = document.getElementById("result-heading");
+const errorContainer = document.getElementById("error-container");
+const recipeDetails = document.getElementById("recipe-details");
+const recipeDetailsContent = document.getElementById("recipe-details-content");
+const backBtn = document.getElementById("back-btn");
 
-    const recipeList = document.getElementById("recipe-list");
+const BASE_URL = "http://localhost:5274/api/";
+const SEARCH_URL = `${BASE_URL}`;
+const LOOKUP_URL = `${BASE_URL}`;
 
-    for (const recipe of recipes) {
-        const li = document.createElement("li");
-        li.textContent = recipe.recipeName;
-        recipeList.appendChild(li);
+searchBtn.addEventListener("click", searchMeals);
+searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") searchMeals()
+});
 
-        li.style.cursor = "pointer";
-
-        li.addEventListener("click", () => {
-            window.location.href = `recipe.html?id=${recipe.recipeId}`
-        });
-    }
+function searchMeals() {
+    
 }
-
-loadRecipes();
-
