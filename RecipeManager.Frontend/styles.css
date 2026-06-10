@@ -215,16 +215,30 @@ button:hover {
     text-align: center;
 }
 
-.recipe-details-category {
+.recipe-details-categories {
     margin-bottom: 1rem;
     text-align: center;
 }
 
-.recipe-details-category span {
+.recipe-details-tags {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.recipe-details-categories span {
     background-color: var(--primary-light);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.9rem;
+    margin: 5px;
+}
+
+.recipe-details-tags span {
+    background-color: var(--secondary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 5px;
 }
 
 .recipe-details-instructions h3 {

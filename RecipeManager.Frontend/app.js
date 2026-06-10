@@ -109,8 +109,18 @@ async function handleRecipeClick(e) {
     if (recipe) {
       const ingredients = recipe["ingredients"];
       const instructions = recipe["instructions"];
-      console.log(ingredients);
-      console.log(instructions);
+      
+      recipeDetailsContent.innerHTML = `
+        <h2 class="recipe-details-title">${recipe["recipeName"]}</h2>
+        <div class="recipe-details-categories">
+          ${recipe["categories"].map((c) => `<span class="category">${c}</span>`).join("")}
+        </div>
+        <div class="recipe-details-tags">
+          ${recipe["tags"].map((t) => `<span class="tag">${t}</span>`).join("")}
+        </div>
+      `;
+
+      recipeDetails.classList.remove("hidden");
     }
   } catch (error) {
 
