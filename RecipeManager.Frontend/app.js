@@ -13,6 +13,8 @@ const SEARCH_URL = `${BASE_URL}recipes?search=`;
 const LOOKUP_URL = `${BASE_URL}recipes/`; // get recipe details from id
 
 searchBtn.addEventListener("click", searchMeals);
+recipesContainer.addEventListener("click", handleRecipeClick);
+backBtn.addEventListener("click", () => recipeDetails.classList.add("hidden"));
 searchInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") searchMeals();
 });
@@ -95,4 +97,22 @@ async function fetchRecipeById(recipeId) {
   var response = await fetch(`${LOOKUP_URL}${recipeId}`);
   var recipe = response.json();
   return recipe;
+}
+
+async function handleRecipeClick(e) {
+  const recipeElement = e.target.closest(".recipe");
+  if (!recipeElement) return;
+  const recipeId = recipeElement.getAttribute("data-recipe-id");
+  
+  try {
+    let recipe = await fetchRecipeById(recipeId);
+    if (recipe) {
+      const ingredients = recipe["ingredients"];
+      const instructions = recipe["instructions"];
+      console.log(ingredients);
+      console.log(instructions);
+    }
+  } catch (error) {
+
+  }
 }
