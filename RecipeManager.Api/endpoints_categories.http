@@ -2,23 +2,119 @@
 GET http://localhost:5274/api/categories/
 
 ###
-GET http://localhost:5274/api/categories/6
+GET http://localhost:5274/api/categories/1
 
 ###
 POST http://localhost:5274/api/categories
 Content-Type: application/json
 
 {
-    "categoryName": "TestTag"
+    "categoryName": "Appetizers"
 }
 
 ###
-PUT http://localhost:5274/api/categories/8
+POST http://localhost:5274/api/categories
 Content-Type: application/json
 
 {
-    "categoryName": "EditedTestCategory"
+    "categoryName": "Beverages"
 }
 
 ###
-DELETE http://localhost:5274/api/categories/8
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Breads"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Breakfast"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Main Dishes"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Pasta & Noodles"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Rice & Grains"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Soups & Stews"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Salads"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Sandwiches & Wraps"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Sauces & Condiments"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Side Dishes"
+}
+
+###
+POST http://localhost:5274/api/categories
+Content-Type: application/json
+
+{
+    "categoryName": "Desserts"
+}
+
+###
+PUT http://localhost:5274/api/categories/1
+Content-Type: application/json
+
+{
+    "categoryName": "EditedCategory"
+}
+
+###
+DELETE http://localhost:5274/api/categories/1

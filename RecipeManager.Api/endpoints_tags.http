@@ -9,15 +9,263 @@ POST http://localhost:5274/api/tags
 Content-Type: application/json
 
 {
-    "tagName": "TestTag1"
+    "tagName": "Indian"
 }
 
 ###
-PUT http://localhost:5274/api/tags/6
+POST http://localhost:5274/api/tags
 Content-Type: application/json
 
 {
-    "tagName": "EditedTestTag"
+    "tagName": "South Indian"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "North Indian"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Chinese"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Italian"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Mexican"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Thai"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Japanese"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Mediterranean"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "American"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Vegetarian"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Vegan"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Gluten-Free"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Dairy-Free"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "High-Protein"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Low-Carb"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Grilled"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Baked"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Fried"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Roasted"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Steamed"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Pressure Cooker"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Air Fryer"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Slow Cooker"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Spicy"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Sweet"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Savory"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Tangy"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Creamy"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Easy"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Medium"
+}
+
+###
+POST http://localhost:5274/api/tags
+Content-Type: application/json
+
+{
+    "tagName": "Hard"
+}
+
+###
+PUT http://localhost:5274/api/tags/1
+Content-Type: application/json
+
+{
+    "tagName": "EditedTag"
 }
 
 ###

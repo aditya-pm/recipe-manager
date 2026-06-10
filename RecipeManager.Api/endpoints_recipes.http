@@ -2,9 +2,123 @@
 GET http://localhost:5274/api/recipes
 
 ###
+GET http://localhost:5274/api/recipes?search=chicken
+
+###
 GET http://localhost:5274/api/recipes/13
 
+###
+PUT http://localhost:5274/api/recipes/12
+Content-Type: application/json
+
+{
+    "recipeName": "Chocolate Fudge Cake",
+    "ingredients": [
+        {
+            "ingredientName": "Flour",
+            "quantity": 3,
+            "unit": "cups"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Bake"
+        }
+    ],
+    "categories": [
+        "Dessert"
+    ],
+    "tags": [
+        "Easy"
+    ]
+}
+
+###
+DELETE http://localhost:5274/api/recipes/16
+
 ### POST 1
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Masala Dosa",
+    "ingredients": [
+        {
+            "ingredientName": "Dosa Batter",
+            "quantity": 500,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Potato",
+            "quantity": 250,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare potato filling."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Spread batter on hot pan."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Add filling and fold dosa."
+        }
+    ],
+    "categories": [
+        "Breakfast"
+    ],
+    "tags": [
+        "Indian",
+        "South Indian",
+        "Vegetarian"
+    ]
+}
+
+### POST 2
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Paneer Butter Masala",
+    "ingredients": [
+        {
+            "ingredientName": "Paneer",
+            "quantity": 250,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Tomato Puree",
+            "quantity": 200,
+            "unit": "ml"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare gravy."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Add paneer and simmer."
+        }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Indian",
+        "North Indian",
+        "Vegetarian",
+        "Creamy"
+    ]
+}
+
+### POST 3
 POST http://localhost:5274/api/recipes
 Content-Type: application/json
 
@@ -25,95 +139,823 @@ Content-Type: application/json
     "instructions": [
         {
             "stepNumber": 1,
-            "description": "Wash the rice."
+            "description": "Cook chicken with spices."
         },
         {
             "stepNumber": 2,
-            "description": "Cook the chicken."
+            "description": "Layer rice and chicken."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Cook until done."
+        }
+    ],
+    "categories": [
+        "Rice & Grains"
+    ],
+    "tags": [
+        "Indian",
+        "Spicy",
+        "High-Protein"
+    ]
+}
+
+### POST 4
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Veg Fried Rice",
+    "ingredients": [
+        {
+            "ingredientName": "Rice",
+            "quantity": 300,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Mixed Vegetables",
+            "quantity": 200,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Stir fry vegetables."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Add rice and seasonings."
+        }
+    ],
+    "categories": [
+        "Rice & Grains"
+    ],
+    "tags": [
+        "Chinese",
+        "Vegetarian",
+        "Savory"
+    ]
+}
+
+### POST 5
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Hakka Noodles",
+    "ingredients": [
+        {
+            "ingredientName": "Noodles",
+            "quantity": 250,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Chicken",
+            "quantity": 200,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Cook noodles."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Stir fry chicken."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Combine everything."
+        }
+    ],
+    "categories": [
+        "Pasta & Noodles"
+    ],
+    "tags": [
+        "Chinese",
+        "High-Protein",
+        "Savory"
+    ]
+}
+
+### POST 6
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Spaghetti Carbonara",
+    "ingredients": [
+        {
+            "ingredientName": "Spaghetti",
+            "quantity": 300,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Egg",
+            "quantity": 2,
+            "unit": "pieces"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Cook pasta."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Prepare sauce."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Mix and serve."
+        }
+    ],
+    "categories": [
+        "Pasta & Noodles"
+    ],
+    "tags": [
+        "Italian",
+        "Creamy"
+    ]
+}
+
+### POST 7
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Margherita Pizza",
+    "ingredients": [
+        {
+            "ingredientName": "Pizza Dough",
+            "quantity": 1,
+            "unit": "base"
+        },
+        {
+            "ingredientName": "Mozzarella",
+            "quantity": 150,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare pizza base."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Add toppings."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Bake until golden."
         }
     ],
     "categories": [
         "Main Dishes"
     ],
     "tags": [
-        "Indian",
-        "Easy"
+        "Italian",
+        "Vegetarian",
+        "Baked"
     ]
 }
 
-### POST 2
+### POST 8
 POST http://localhost:5274/api/recipes
 Content-Type: application/json
 
 {
-    "recipeName": "Chocolate Cake",
+    "recipeName": "Greek Salad",
     "ingredients": [
         {
-            "ingredientName": "Flour",
-            "quantity": 2,
-            "unit": "cups"
+            "ingredientName": "Cucumber",
+            "quantity": 1,
+            "unit": "piece"
         },
         {
-            "ingredientName": "Sugar",
-            "quantity": 1,
-            "unit": "cup"
+            "ingredientName": "Feta Cheese",
+            "quantity": 100,
+            "unit": "g"
         }
     ],
     "instructions": [
         {
             "stepNumber": 1,
-            "description": "Mix ingredients"
+            "description": "Chop vegetables."
         },
         {
             "stepNumber": 2,
-            "description": "Bake for 30 minutes"
+            "description": "Mix and serve."
         }
     ],
     "categories": [
-        "Dessert"
+        "Salads"
     ],
     "tags": [
-        "Easy"
-    ]
-}
-
-###
-PUT http://localhost:5274/api/recipes/12
-Content-Type: application/json
-
-{
-    "recipeName": "Chocolate Fudge Cake",
-    "ingredients": [
-        {
-            "ingredientName": "Flour",
-            "quantity": 3,
-            "unit": "cups"
-        },
-        {
-            "ingredientName": "Cocoa Powder",
-            "quantity": 1,
-            "unit": "cup"
-        }
-    ],
-    "instructions": [
-        {
-            "stepNumber": 1,
-            "description": "Combine dry ingredients"
-        },
-        {
-            "stepNumber": 2,
-            "description": "Bake for 40 minutes"
-        }
-    ],
-    "categories": [
-        "Dessert",
-        "Quick"
-    ],
-    "tags": [
-        "Easy",
+        "Mediterranean",
         "Vegetarian"
     ]
 }
 
-###
-DELETE  http://localhost:5274/api/recipes/12
+### POST 9
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Mango Smoothie",
+    "ingredients": [
+        {
+            "ingredientName": "Mango",
+            "quantity": 2,
+            "unit": "pieces"
+        },
+        {
+            "ingredientName": "Milk",
+            "quantity": 250,
+            "unit": "ml"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Blend all ingredients."
+        }
+    ],
+    "categories": [
+        "Beverages"
+    ],
+    "tags": [
+        "Sweet",
+        "Easy"
+    ]
+}
+
+### POST 10
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chocolate Brownie",
+    "ingredients": [
+        {
+            "ingredientName": "Chocolate",
+            "quantity": 200,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Flour",
+            "quantity": 150,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare batter."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Bake."
+        }
+    ],
+    "categories": [
+        "Desserts"
+    ],
+    "tags": [
+        "Sweet",
+        "Baked"
+    ]
+}
+
+### POST 11
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Garlic Bread",
+    "ingredients": [
+        { "ingredientName": "Bread", "quantity": 1, "unit": "loaf" },
+        { "ingredientName": "Garlic", "quantity": 5, "unit": "cloves" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Mix garlic butter." },
+        { "stepNumber": 2, "description": "Spread on bread." },
+        { "stepNumber": 3, "description": "Bake until golden." }
+    ],
+    "categories": ["Breads"],
+    "tags": ["Italian", "Vegetarian", "Baked", "Easy"]
+}
+
+### POST 12
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Butter Naan",
+    "ingredients": [
+        { "ingredientName": "Flour", "quantity": 300, "unit": "g" },
+        { "ingredientName": "Butter", "quantity": 50, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Prepare dough." },
+        { "stepNumber": 2, "description": "Roll naan." },
+        { "stepNumber": 3, "description": "Cook and brush with butter." }
+    ],
+    "categories": ["Breads"],
+    "tags": ["Indian", "North Indian", "Vegetarian"]
+}
+
+### POST 13
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Bruschetta",
+    "ingredients": [
+        { "ingredientName": "Bread", "quantity": 4, "unit": "slices" },
+        { "ingredientName": "Tomato", "quantity": 2, "unit": "pieces" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Toast bread." },
+        { "stepNumber": 2, "description": "Add tomato topping." }
+    ],
+    "categories": ["Appetizers"],
+    "tags": ["Italian", "Vegetarian", "Easy"]
+}
+
+### POST 14
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Vegetable Spring Rolls",
+    "ingredients": [
+        { "ingredientName": "Spring Roll Wrapper", "quantity": 10, "unit": "pieces" },
+        { "ingredientName": "Vegetables", "quantity": 200, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Prepare filling." },
+        { "stepNumber": 2, "description": "Wrap rolls." },
+        { "stepNumber": 3, "description": "Fry until crisp." }
+    ],
+    "categories": ["Appetizers"],
+    "tags": ["Chinese", "Vegetarian", "Fried"]
+}
+
+### POST 15
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Tomato Soup",
+    "ingredients": [
+        { "ingredientName": "Tomatoes", "quantity": 500, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Cook tomatoes." },
+        { "stepNumber": 2, "description": "Blend and simmer." }
+    ],
+    "categories": ["Soups & Stews"],
+    "tags": ["Vegetarian", "Easy"]
+}
+
+### POST 16
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Soup",
+    "ingredients": [
+        { "ingredientName": "Chicken", "quantity": 300, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Boil chicken." },
+        { "stepNumber": 2, "description": "Simmer with seasoning." }
+    ],
+    "categories": ["Soups & Stews"],
+    "tags": ["High-Protein", "Easy"]
+}
+
+### POST 17
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Veg Wrap",
+    "ingredients": [
+        { "ingredientName": "Tortilla", "quantity": 2, "unit": "pieces" },
+        { "ingredientName": "Vegetables", "quantity": 150, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Prepare filling." },
+        { "stepNumber": 2, "description": "Wrap and serve." }
+    ],
+    "categories": ["Sandwiches & Wraps"],
+    "tags": ["Vegetarian", "Easy"]
+}
+
+### POST 18
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Wrap",
+    "ingredients": [
+        { "ingredientName": "Chicken", "quantity": 200, "unit": "g" },
+        { "ingredientName": "Tortilla", "quantity": 2, "unit": "pieces" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Cook chicken." },
+        { "stepNumber": 2, "description": "Wrap with vegetables." }
+    ],
+    "categories": ["Sandwiches & Wraps"],
+    "tags": ["High-Protein", "Easy"]
+}
+
+### POST 19
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Mint Chutney",
+    "ingredients": [
+        { "ingredientName": "Mint Leaves", "quantity": 100, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Blend ingredients." }
+    ],
+    "categories": ["Sauces & Condiments"],
+    "tags": ["Indian", "Vegetarian", "Tangy"]
+}
+
+### POST 20
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Tomato Salsa",
+    "ingredients": [
+        { "ingredientName": "Tomatoes", "quantity": 300, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Chop and mix ingredients." }
+    ],
+    "categories": ["Sauces & Condiments"],
+    "tags": ["Mexican", "Vegetarian", "Tangy"]
+}
+
+### POST 21
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "French Fries",
+    "ingredients": [
+        { "ingredientName": "Potatoes", "quantity": 400, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Cut potatoes." },
+        { "stepNumber": 2, "description": "Fry until golden." }
+    ],
+    "categories": ["Side Dishes"],
+    "tags": ["Fried", "Easy"]
+}
+
+### POST 22
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Roasted Vegetables",
+    "ingredients": [
+        { "ingredientName": "Mixed Vegetables", "quantity": 400, "unit": "g" }
+    ],
+    "instructions": [
+        { "stepNumber": 1, "description": "Season vegetables." },
+        { "stepNumber": 2, "description": "Roast until tender." }
+    ],
+    "categories": ["Side Dishes"],
+    "tags": ["Vegetarian", "Roasted", "Easy"]
+}
+
+### POST 23
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Pad Thai",
+    "ingredients": [
+        {
+            "ingredientName": "Rice Noodles",
+            "quantity": 250,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Peanuts",
+            "quantity": 50,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Cook rice noodles."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Prepare sauce."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Combine and stir fry."
+        }
+    ],
+    "categories": [
+        "Pasta & Noodles"
+    ],
+    "tags": [
+        "Thai",
+        "Savory"
+    ]
+}
+
+### POST 24
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Sushi Roll",
+    "ingredients": [
+        {
+            "ingredientName": "Sushi Rice",
+            "quantity": 250,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Nori",
+            "quantity": 4,
+            "unit": "sheets"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare rice."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Roll with fillings."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Slice and serve."
+        }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Japanese",
+        "Medium"
+    ]
+}
+
+### POST 25
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Chicken Tacos",
+    "ingredients": [
+        {
+            "ingredientName": "Chicken",
+            "quantity": 250,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Taco Shells",
+            "quantity": 6,
+            "unit": "pieces"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Cook seasoned chicken."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Fill taco shells."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Serve with toppings."
+        }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Mexican",
+        "High-Protein",
+        "Spicy"
+    ]
+}
+
+### POST 26
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Pancakes",
+    "ingredients": [
+        {
+            "ingredientName": "Flour",
+            "quantity": 200,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Milk",
+            "quantity": 250,
+            "unit": "ml"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare batter."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Cook on griddle."
+        }
+    ],
+    "categories": [
+        "Breakfast"
+    ],
+    "tags": [
+        "American",
+        "Sweet",
+        "Easy"
+    ]
+}
+
+### POST 27
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Caesar Salad",
+    "ingredients": [
+        {
+            "ingredientName": "Lettuce",
+            "quantity": 1,
+            "unit": "head"
+        },
+        {
+            "ingredientName": "Croutons",
+            "quantity": 100,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Wash lettuce."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Mix ingredients."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Add dressing."
+        }
+    ],
+    "categories": [
+        "Salads"
+    ],
+    "tags": [
+        "American",
+        "Easy"
+    ]
+}
+
+### POST 28
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Lemonade",
+    "ingredients": [
+        {
+            "ingredientName": "Lemon",
+            "quantity": 4,
+            "unit": "pieces"
+        },
+        {
+            "ingredientName": "Sugar",
+            "quantity": 50,
+            "unit": "g"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Squeeze lemons."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Mix with water and sugar."
+        }
+    ],
+    "categories": [
+        "Beverages"
+    ],
+    "tags": [
+        "Sweet",
+        "Easy"
+    ]
+}
+
+### POST 29
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Vanilla Ice Cream",
+    "ingredients": [
+        {
+            "ingredientName": "Milk",
+            "quantity": 500,
+            "unit": "ml"
+        },
+        {
+            "ingredientName": "Vanilla Extract",
+            "quantity": 5,
+            "unit": "ml"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Prepare mixture."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Freeze until set."
+        }
+    ],
+    "categories": [
+        "Desserts"
+    ],
+    "tags": [
+        "Sweet",
+        "Easy"
+    ]
+}
+
+### POST 30
+POST http://localhost:5274/api/recipes
+Content-Type: application/json
+
+{
+    "recipeName": "Thai Green Curry",
+    "ingredients": [
+        {
+            "ingredientName": "Green Curry Paste",
+            "quantity": 50,
+            "unit": "g"
+        },
+        {
+            "ingredientName": "Coconut Milk",
+            "quantity": 400,
+            "unit": "ml"
+        }
+    ],
+    "instructions": [
+        {
+            "stepNumber": 1,
+            "description": "Cook curry paste."
+        },
+        {
+            "stepNumber": 2,
+            "description": "Add coconut milk."
+        },
+        {
+            "stepNumber": 3,
+            "description": "Simmer and serve."
+        }
+    ],
+    "categories": [
+        "Main Dishes"
+    ],
+    "tags": [
+        "Thai",
+        "Spicy",
+        "Medium"
+    ]
+}

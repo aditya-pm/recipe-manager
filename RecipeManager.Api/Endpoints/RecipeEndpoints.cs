@@ -10,13 +10,22 @@ public static class RecipeEndpoints
         RouteGroupBuilder recipes = app.MapGroup("/api/recipes");
 
 
-        recipes.MapGet("/", async (RecipeManagerContext db) =>
+        recipes.MapGet("/", async (string? search, RecipeManagerContext db) =>
         {
-            var recipes = await db.Recipes.Select(recipe => new
+            var query = db.Recipes.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
             {
+                search = search.Trim();
+                // query = query.Where(r => r.RecipeName.Contains(search));
+                query = query.Where(r =>
+                    EF.Functions.Like(r.RecipeName, $"%{search}%"));
+            }
+
+            var recipes = await query.Select(recipe => new RecipeListResponse(
                 recipe.RecipeId,
                 recipe.RecipeName
-            }).ToListAsync();
+            )).ToListAsync();
 
             return Results.Ok(recipes);
         });
