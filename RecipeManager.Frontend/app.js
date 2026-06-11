@@ -59,15 +59,13 @@ async function displayRecipes(recipesResponseArray) {
   const recipesArray = await fetchRecipes(recipesResponseArray);
 
   recipesArray.forEach((recipe) => {
-    let recipeTags = "";
-    recipe["tags"].forEach((tag) => {
-      recipeTags += `<span class="tag">${tag}</span>`;
-    });
+    const recipeCategories = recipe.categories
+      .map((category) => `<span class="category">${category}</span>`)
+      .join("");
 
-    let recipeCategories = "";
-    recipe["categories"].forEach((category) => {
-      recipeCategories += `<span class="category">${category}</span>`
-    });
+    const recipeTags = recipe.tags
+      .map((tag) => `<span class="tag">${tag}</span>`)
+      .join("");
 
     recipesContainer.innerHTML += `
       <div class="recipe" data-recipe-id="${recipe.recipeId}">
@@ -86,16 +84,14 @@ async function displayRecipes(recipesResponseArray) {
 }
 
 async function fetchRecipes(recipesResponseArray) {
-  recipesArray = [];
-  for (var i = 0; i < recipesResponseArray.length; i++) {
-    recipesArray.push(await fetchRecipeById(recipesResponseArray[i].recipeId));
-  }
-  return recipesArray;
+  return Promise.all(
+    recipesResponseArray.map((recipe) => fetchRecipeById(recipe.recipeId)),
+  );
 }
 
 async function fetchRecipeById(recipeId) {
-  var response = await fetch(`${LOOKUP_URL}${recipeId}`);
-  var recipe = response.json();
+  let response = await fetch(`${LOOKUP_URL}${recipeId}`);
+  const recipe = await response.json();
   return recipe;
 }
 
@@ -103,26 +99,47 @@ async function handleRecipeClick(e) {
   const recipeElement = e.target.closest(".recipe");
   if (!recipeElement) return;
   const recipeId = recipeElement.getAttribute("data-recipe-id");
-  
+
   try {
     let recipe = await fetchRecipeById(recipeId);
     if (recipe) {
-      const ingredients = recipe["ingredients"];
-      const instructions = recipe["instructions"];
-      
+      const ingredients = recipe.ingredients;
+      const instructions = recipe.instructions;
+
       recipeDetailsContent.innerHTML = `
-        <h2 class="recipe-details-title">${recipe["recipeName"]}</h2>
+        <h2 class="recipe-details-title">${recipe.recipeName}</h2>
         <div class="recipe-details-categories">
-          ${recipe["categories"].map((c) => `<span class="category">${c}</span>`).join("")}
+          ${recipe.categories.map((c) => `<span class="category">${c}</span>`).join("")}
         </div>
         <div class="recipe-details-tags">
-          ${recipe["tags"].map((t) => `<span class="tag">${t}</span>`).join("")}
+          ${recipe.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+        </div>
+        <div class="recipe-details-ingredients">
+          <h3>Ingredients</h3>
+          <ul class="ingredients-list">
+            ${ingredients
+              .map(
+                (i) =>
+                  `<li><i class="fas fa-check-circle"></i> ${i.quantity} ${i.unit} ${i.ingredientName}</li>`,
+              )
+              .join("")}
+          </ul>
+        </div>
+        <div class="recipe-details-instructions">
+          <h3>Instructions</h3>
+          <ul class="instructions-list">
+            ${instructions.map((i) => `<li><strong>${i.stepNumber}</strong>. ${i.description}</li>`).join("")}
+          </ul>
         </div>
       `;
 
       recipeDetails.classList.remove("hidden");
+      recipeDetails.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   } catch (error) {
-
+    errorContainer.textContent = "Could not load recipe details.";
+    errorContainer.classList.remove("hidden");
   }
 }
