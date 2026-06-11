@@ -1,4 +1,5 @@
 // DOM elements
+const addRecipeBtn = document.getElementById("add-recipe-btn");
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const recipesContainer = document.getElementById("recipes");
@@ -8,18 +9,26 @@ const recipeDetails = document.getElementById("recipe-details");
 const recipeDetailsContent = document.getElementById("recipe-details-content");
 const backBtn = document.getElementById("back-btn");
 
+
+// CONSTANTS
 const BASE_URL = "http://localhost:5274/api/";
 const SEARCH_URL = `${BASE_URL}recipes?search=`;
 const LOOKUP_URL = `${BASE_URL}recipes/`; // get recipe details from id
 
-searchBtn.addEventListener("click", searchMeals);
+
+// EVENT LISTENERS
+addRecipeBtn.addEventListener("click", () => window.location.href = "add_recipe.html");
+searchBtn.addEventListener("click", searchRecipes);
 recipesContainer.addEventListener("click", handleRecipeClick);
 backBtn.addEventListener("click", () => recipeDetails.classList.add("hidden"));
+
 searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") searchMeals();
+  if (e.key === "Enter") searchRecipes();
 });
 
-async function searchMeals() {
+
+// FUNCTIONS 
+async function searchRecipes() {
   const searchTerm = searchInput.value.trim();
 
   if (!searchTerm) {
