@@ -1,3 +1,5 @@
+import { SEARCH_URL, LOOKUP_URL } from "./config.js";
+
 // DOM elements
 const addRecipeBtn = document.getElementById("add-recipe-btn");
 const searchInput = document.getElementById("search-input");
@@ -8,12 +10,6 @@ const errorContainer = document.getElementById("error-container");
 const recipeDetails = document.getElementById("recipe-details");
 const recipeDetailsContent = document.getElementById("recipe-details-content");
 const backBtn = document.getElementById("back-btn");
-
-
-// CONSTANTS
-const BASE_URL = "http://localhost:5274/api/";
-const SEARCH_URL = `${BASE_URL}recipes?search=`;
-const LOOKUP_URL = `${BASE_URL}recipes/`; // get recipe details from id
 
 
 // EVENT LISTENERS
