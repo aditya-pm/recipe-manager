@@ -4,46 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Manager | Add Recipe</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/add_recipe.css" />
   </head>
   <body>
-    <h1>Add Recipe</h1>
-    <form id="add-recipe-form">
-      <label for="recipe-name">Recipe Name</label>
-      <input type="text" id="recipe-name" name="recipeName">
+    <div id="add-recipe-container">
+      <h1>Add Recipe</h1>
+      <form id="add-recipe-form">
+        <h2>Recipe Name</h2>
+        <input type="text" id="recipe-name" name="recipeName" />
 
-      <h2>Categories</h2>
-      <div id="categories-input-container">
-        <input type="text" class="category-input" placeholder="Rice & Grains">
-      </div>
-      <button type="button" id="add-category-btn">Add Category</button>
-
-      <h2>Tags</h2>
-      <div id="tags-input-container">
-        <input type="text" class="tag-input" placeholder="High Protein">
-      </div>
-      <button type="button" id="add-tag-btn">Add Tag</button>
-
-      <h2>Ingredients</h2>
-      <div id="ingredients-input-container">
-        <div class="ingredient-row">
-          <input type="text" placeholder="Name" class="ingredient-name">
-          <input type="number" placeholder="Quantity" class="ingredient-quantity">
-          <input type="text" placeholder="Unit" class="ingredient-unit">
+        <h2>Categories</h2>
+        <div id="categories-input-container">
+          <input
+            type="text"
+            class="category-input"
+            placeholder="Rice & Grains"
+          />
         </div>
-        <!-- ON button click, add above div again-->
-      </div>
-      <button type="button" id="add-ingredient-btn">Add Ingredient</button>
+        <button type="button" id="add-category-btn">Add Category</button>
 
-      <h2>Instructions</h2>
-      <div id="instructions-input-container">
-        <textarea class="instruction-step" placeholder="Describe step 1 ..."></textarea>
-        <!-- ON button click, add above textarea again -->
-      </div>
-      <button type="button" id="add-instruction-btn">Add Instruction</button>
+        <h2>Tags</h2>
+        <div id="tags-input-container">
+          <input type="text" class="tag-input" placeholder="High Protein" />
+        </div>
+        <button type="button" id="add-tag-btn">Add Tag</button>
 
-      <button type="submit" id="save-recipe-btn">Save Recipe</button>
-    </form>
+        <h2>Ingredients</h2>
+        <div id="ingredients-input-container">
+          <div class="ingredient-row">
+            <input type="text" placeholder="Name" class="ingredient-name" />
+            <input
+              type="number"
+              placeholder="Quantity"
+              class="ingredient-quantity"
+            />
+            <input type="text" placeholder="Unit" class="ingredient-unit" />
+          </div>
+          <!-- ON button click, add above div again-->
+        </div>
+        <button type="button" id="add-ingredient-btn">Add Ingredient</button>
 
-    <script type="module" src="./js/add_recipe.js"></script>
+        <h2>Instructions</h2>
+        <div id="instructions-input-container">
+          <textarea
+            class="instruction-step"
+            placeholder="Describe step 1 ..."
+          ></textarea>
+          <!-- ON button click, add above textarea again -->
+        </div>
+        <button type="button" id="add-instruction-btn">Add Instruction</button>
+
+        <button type="submit" id="save-recipe-btn">Save Recipe</button>
+      </form>
+
+      <script type="module" src="./js/add_recipe.js"></script>
+    </div>
   </body>
 </html>
