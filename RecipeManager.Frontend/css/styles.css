@@ -99,6 +99,12 @@ header p {
     color: var(--text-dark);
 }
 
+#add-recipe-btn {
+    background-color: var(--secondary);
+    display: block;
+    margin: 1rem auto;
+}
+
 
 /* SEARCH */
 #search-container {
@@ -249,19 +255,13 @@ header p {
 
 
 /* LISTS */
-.ingredients-list {
+.ingredients-list,
+.instructions-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
     width: 100%;
-    margin-bottom: 1.5rem;
-}
-
-.instructions-list {
-    list-style: none;
-    width: 100%;
-    padding: 0;
     margin-bottom: 1.5rem;
 }
 

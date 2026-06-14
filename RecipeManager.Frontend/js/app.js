@@ -56,6 +56,7 @@ async function searchRecipes() {
     errorContainer.textContent =
       "Something went wrong. Please try again later.";
     errorContainer.classList.remove("hidden");
+    resultHeading.textContent = "";
   }
 }
 
