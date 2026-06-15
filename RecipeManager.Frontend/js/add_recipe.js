@@ -1,5 +1,6 @@
-import { ADD_RECIPE_URL } from "./config.js";
+import { ADD_RECIPE_URL, LOOKUP_URL } from "./config.js";
 
+// DOM REFERENCES
 const addRecipeForm = document.getElementById("add-recipe-form");
 const recipeNameTextField = document.getElementById("recipe-name");
 const categoriesInputContainer = document.getElementById(
@@ -18,62 +19,23 @@ const instructionsInputContainer = document.getElementById(
 const instructionAddBtn = document.getElementById("add-instruction-btn");
 const saveRecipeBtn = document.getElementById("save-recipe-btn");
 
-categoryAddBtn.addEventListener("click", () => {
-  const input = document.createElement("input");
+// URL PARAMS
+const params = new URLSearchParams(window.location.search);
+const recipeId = params.get("id");
+const isEditMode = recipeId !== null;
 
-  input.type = "text";
-  input.className = "category-input";
-  input.placeholder = "Rice & Grains";
-
-  categoriesInputContainer.appendChild(input);
-});
-
-tagAddBtn.addEventListener("click", () => {
-  const input = document.createElement("input");
-
-  input.type = "text";
-  input.className = "tag-input";
-  input.placeholder = "High Protein";
-
-  tagsInputContainer.appendChild(input);
-});
-
-ingredientAddBtn.addEventListener("click", () => {
-  const ingredientRow = document.createElement("div");
-  ingredientRow.className = "ingredient-row";
-
-  const ingredientName = document.createElement("input");
-  ingredientName.type = "text";
-  ingredientName.placeholder = "Name";
-  ingredientName.className = "ingredient-name";
-
-  const ingredientQuantity = document.createElement("input");
-  ingredientQuantity.type = "number";
-  ingredientQuantity.placeholder = "Quantity";
-  ingredientQuantity.className = "ingredient-quantity";
-
-  const ingredientUnit = document.createElement("input");
-  ingredientUnit.type = "text";
-  ingredientUnit.placeholder = "Unit";
-  ingredientUnit.className = "ingredient-unit";
-
-  ingredientRow.appendChild(ingredientName);
-  ingredientRow.appendChild(ingredientQuantity);
-  ingredientRow.appendChild(ingredientUnit);
-  ingredientsInputContainer.appendChild(ingredientRow);
-});
-
-instructionAddBtn.addEventListener("click", () => {
-  const instructionDescription = document.createElement("textarea");
-  instructionDescription.className = "instruction-step";
-  instructionDescription.placeholder = `Describe step ${instructionsInputContainer.children.length + 1} ...`;
-  instructionsInputContainer.appendChild(instructionDescription);
-});
+// EVENT LISTENERS
+categoryAddBtn.addEventListener("click", () => addCategoryInput());
+tagAddBtn.addEventListener("click", () => addTagInput());
+ingredientAddBtn.addEventListener("click", () => addIngredientInput());
+instructionAddBtn.addEventListener("click", () => addInstructionInput());
 
 addRecipeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const categories = Array.from(addRecipeForm.querySelectorAll(".category-input"))
+  const categories = Array.from(
+    addRecipeForm.querySelectorAll(".category-input"),
+  )
     .map((categoryElement) => categoryElement.value.trim())
     .filter((category) => category !== "");
 
@@ -81,7 +43,9 @@ addRecipeForm.addEventListener("submit", async (event) => {
     .map((tagElement) => tagElement.value.trim())
     .filter((tag) => tag !== "");
 
-  const ingredients = Array.from(addRecipeForm.querySelectorAll(".ingredient-row"))
+  const ingredients = Array.from(
+    addRecipeForm.querySelectorAll(".ingredient-row"),
+  )
     .map((row) => ({
       ingredientName: row.querySelector(".ingredient-name").value.trim(),
       quantity: Number(row.querySelector(".ingredient-quantity").value.trim()),
@@ -107,8 +71,11 @@ addRecipeForm.addEventListener("submit", async (event) => {
   };
 
   try {
-    const response = await fetch(ADD_RECIPE_URL, {
-      method: "POST",
+    const url = isEditMode ? `${LOOKUP_URL}${recipeId}` : ADD_RECIPE_URL;
+    const method = isEditMode ? "PUT" : "POST";
+
+    const response = await fetch(url, {
+      method: method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -121,8 +88,106 @@ addRecipeForm.addEventListener("submit", async (event) => {
       return;
     }
 
-    alert("Recipe created!");
+    window.location.href = "./index.html";
+    alert(isEditMode ? "Recipe updated!" : "Recipe created!");
   } catch (error) {
     console.error(error);
   }
 });
+
+// HELPERS
+async function fetchRecipeById(recipeId) {
+  let response = await fetch(`${LOOKUP_URL}${recipeId}`);
+  const recipe = await response.json();
+  return recipe;
+}
+
+function addCategoryInput(value = "") {
+  const input = document.createElement("input");
+
+  input.type = "text";
+  input.className = "category-input";
+  input.placeholder = "Rice & Grains";
+  input.value = value;
+
+  categoriesInputContainer.appendChild(input);
+}
+
+function addTagInput(value = "") {
+  const input = document.createElement("input");
+
+  input.type = "text";
+  input.className = "tag-input";
+  input.placeholder = "High-Protein";
+  input.value = value;
+
+  tagsInputContainer.appendChild(input);
+}
+
+function addIngredientInput(ingredient = null) {
+  const ingredientRow = document.createElement("div");
+  ingredientRow.className = "ingredient-row";
+
+  const ingredientName = document.createElement("input");
+  ingredientName.type = "text";
+  ingredientName.placeholder = "Name";
+  ingredientName.className = "ingredient-name";
+  if (ingredient) ingredientName.value = ingredient.ingredientName;
+
+  const ingredientQuantity = document.createElement("input");
+  ingredientQuantity.type = "number";
+  ingredientQuantity.placeholder = "Quantity";
+  ingredientQuantity.className = "ingredient-quantity";
+  if (ingredient) ingredientQuantity.value = ingredient.quantity;
+
+  const ingredientUnit = document.createElement("input");
+  ingredientUnit.type = "text";
+  ingredientUnit.placeholder = "Unit";
+  ingredientUnit.className = "ingredient-unit";
+  if (ingredient) ingredientUnit.value = ingredient.unit;
+
+  ingredientRow.appendChild(ingredientName);
+  ingredientRow.appendChild(ingredientQuantity);
+  ingredientRow.appendChild(ingredientUnit);
+  ingredientsInputContainer.appendChild(ingredientRow);
+}
+
+function addInstructionInput(desc = null) {
+  const instructionDescription = document.createElement("textarea");
+  instructionDescription.className = "instruction-step";
+
+  if (desc) instructionDescription.value = desc;
+  else
+    instructionDescription.placeholder = `Describe step ${instructionsInputContainer.children.length + 1} ...`;
+
+  instructionsInputContainer.appendChild(instructionDescription);
+}
+
+function populateForm(recipe) {
+  recipeNameTextField.value = recipe.recipeName;
+
+  categoriesInputContainer.innerHTML = "";
+  recipe.categories.forEach((category) => addCategoryInput(category));
+
+  tagsInputContainer.innerHTML = "";
+  recipe.tags.forEach((tag) => addTagInput(tag));
+
+  ingredientsInputContainer.innerHTML = "";
+  recipe.ingredients.forEach((ingredient) => addIngredientInput(ingredient));
+
+  instructionsInputContainer.innerHTML = "";
+  recipe.instructions.forEach((i) => addInstructionInput(i.description));
+}
+
+// ENTRY POINT
+async function initializePage() {
+  if (!isEditMode) return;
+
+  const recipe = await fetchRecipeById(recipeId);
+  populateForm(recipe);
+
+  document.querySelector("h1").textContent = "Edit Recipe";
+  saveRecipeBtn.textContent = "Update Recipe";
+}
+
+initializePage();

@@ -120,6 +120,7 @@ async function handleRecipeClick(e) {
   if (!recipeElement) return;
 
   const recipeId = recipeElement.getAttribute("data-recipe-id");
+
   if (e.target.closest(".delete-recipe")) {
     const confirmed = confirm(
         "Delete this recipe permanently?"
@@ -129,6 +130,11 @@ async function handleRecipeClick(e) {
     recipeElement.remove();
     recipeDetails.classList.add("hidden");
     resultHeading.textContent = "";
+    return;
+  }
+
+  if (e.target.closest(".edit-recipe")) {
+    window.location.href = `add_recipe.html?id=${recipeId}`
     return;
   }
 

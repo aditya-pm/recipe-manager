@@ -11,9 +11,10 @@
     flex-direction: column;
     gap: 1rem;
 
+    width: 100%;
     padding: 30px;
     border-radius: 10px;
-    width: 700px;
+    max-width: 700px;
 }
 
 #add-recipe-form h2 {
@@ -27,7 +28,6 @@
 #categories-input-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
     gap: 10px;
 }
 
@@ -52,7 +52,21 @@
 .ingredient-row {
     display: flex;
     gap: 10px;
-    justify-content: space-between;
+}
+
+.ingredient-name {
+    flex: 3;
+    min-width: 0;
+}
+
+.ingredient-quantity {
+    flex: 1;
+    min-width: 0;
+}
+
+.ingredient-unit {
+    flex: 1;
+    min-width: 0;
 }
 
 #save-recipe-btn {
