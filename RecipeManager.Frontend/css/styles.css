@@ -157,8 +157,8 @@ header p {
     overflow: hidden;
     transition: var(--transition);
     cursor: pointer;
-    position: relative;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .recipe:hover {
@@ -171,6 +171,7 @@ header p {
 }
 
 .recipe-title {
+    text-align: center;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
     color: var(--text-dark);
@@ -194,6 +195,46 @@ header p {
     border-radius: 20px;
 }
 
+.recipe-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.recipe-actions button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+}
+
+.delete-recipe {
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    background-color: transparent;
+    color: red;
+}
+
+.edit-recipe {
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    background-color: transparent;
+    color: var(--primary-dark);
+    text-align:start;
+}
+
+.edit-recipe:hover {
+    background-color: rgba(255, 126, 95, 0.15);;
+}
+
+.delete-recipe:hover {
+    background-color: #ffe5e5;;
+}
 
 /* RECIPE DETAILS */
 #recipe-details {

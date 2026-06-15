@@ -84,6 +84,10 @@ async function displayRecipes(recipesResponseArray) {
             ${recipeTags}
           </div>
         </div>
+        <div class="recipe-actions">
+          <button class="delete-recipe"><i class="fa-solid fa-trash"></i></button>
+          <button class="edit-recipe"><i class="fa-solid fa-pen-to-square"></i></button>
+        </div>
       </div>
     `;
   });
@@ -101,10 +105,32 @@ async function fetchRecipeById(recipeId) {
   return recipe;
 }
 
+async function deleteRecipeById(recipeId) {
+  const response = await fetch(`${LOOKUP_URL}${recipeId}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete recipe");
+  }
+}
+
 async function handleRecipeClick(e) {
   const recipeElement = e.target.closest(".recipe");
   if (!recipeElement) return;
+
   const recipeId = recipeElement.getAttribute("data-recipe-id");
+  if (e.target.closest(".delete-recipe")) {
+    const confirmed = confirm(
+        "Delete this recipe permanently?"
+    );
+    if (!confirmed) return;
+    await deleteRecipeById(recipeId);
+    recipeElement.remove();
+    recipeDetails.classList.add("hidden");
+    resultHeading.textContent = "";
+    return;
+  }
 
   try {
     let recipe = await fetchRecipeById(recipeId);

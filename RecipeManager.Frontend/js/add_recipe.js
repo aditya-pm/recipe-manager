@@ -73,15 +73,15 @@ instructionAddBtn.addEventListener("click", () => {
 addRecipeForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const categories = Array.from(document.querySelectorAll(".category-input"))
+  const categories = Array.from(addRecipeForm.querySelectorAll(".category-input"))
     .map((categoryElement) => categoryElement.value.trim())
     .filter((category) => category !== "");
 
-  const tags = Array.from(document.querySelectorAll(".tag-input"))
+  const tags = Array.from(addRecipeForm.querySelectorAll(".tag-input"))
     .map((tagElement) => tagElement.value.trim())
     .filter((tag) => tag !== "");
 
-  const ingredients = Array.from(document.querySelectorAll(".ingredient-row"))
+  const ingredients = Array.from(addRecipeForm.querySelectorAll(".ingredient-row"))
     .map((row) => ({
       ingredientName: row.querySelector(".ingredient-name").value.trim(),
       quantity: Number(row.querySelector(".ingredient-quantity").value.trim()),
@@ -90,7 +90,7 @@ addRecipeForm.addEventListener("submit", async (event) => {
     .filter((i) => i.ingredientName !== "" && i.quantity > 0 && i.unit !== "");
 
   const instructions = Array.from(
-    document.querySelectorAll(".instruction-step"),
+    addRecipeForm.querySelectorAll(".instruction-step"),
   )
     .filter((step) => step.value.trim() !== "")
     .map((step, index) => ({
