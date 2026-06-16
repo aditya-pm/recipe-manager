@@ -61,3 +61,5 @@ Generated/
 # Environment files
 .env
 .env.*
+
+.venv
