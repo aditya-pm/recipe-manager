@@ -24,3 +24,12 @@ def get_transcript(ytt_api: YouTubeTranscriptApi, video_link: str) -> str:
     fetched_transcript: FetchedTranscript = ytt_api.fetch(video_id)
 
     return " ".join(snippet.text for snippet in fetched_transcript)
+
+
+if __name__ == "__main__":
+    ytt_api: YouTubeTranscriptApi = YouTubeTranscriptApi()
+
+    video_link: str = "https://youtu.be/nq9WnmCGoFQ?si=LGuar0y8fgYALLn2"
+
+    transcript: str = get_transcript(ytt_api, video_link)
+    print(transcript)
