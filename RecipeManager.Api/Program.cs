@@ -6,6 +6,7 @@ builder.Services.AddSqlite<RecipeManagerContext>(
     "Data Source=recipes.db"
 );
 builder.Services.AddCors();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

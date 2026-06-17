@@ -159,7 +159,7 @@ public static class RecipeEndpoints
             if (categories.Count != recipeDto.Categories.Count)
                 return Results.BadRequest("One or more categories do not exist");
 
-            List<Tag> tags = await db.Tags 
+            List<Tag> tags = await db.Tags
                 .Where(t => recipeDto.Tags.Contains(t.TagName))
                 .ToListAsync();
 
@@ -203,6 +203,42 @@ public static class RecipeEndpoints
             db.Recipes.Remove(recipe);
             await db.SaveChangesAsync();
             return Results.NoContent();
+        });
+
+        recipes.MapPost("/extract", async (
+            ExtractRecipeRequest request, HttpClient httpClient, RecipeManagerContext db) =>
+        {
+            var categories = await db.Categories
+                .Select(c => c.CategoryName)
+                .ToListAsync();
+
+            var tags = await db.Tags
+                .Select(t => t.TagName)
+                .ToListAsync();
+
+            var aiRequest = new
+            {
+                youtube_url = request.YoutubeUrl,
+                categories,
+                tags
+            };
+
+            var response = await httpClient.PostAsJsonAsync(
+                "http://localhost:8000/extract-recipe",
+                aiRequest
+            );
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return Results.BadRequest(error);
+            }
+
+            var recipe = await response.Content.ReadFromJsonAsync<CreateRecipeRequest>();
+
+            return recipe is not null
+                ? Results.Ok(recipe)
+                : Results.BadRequest("AI service returned invalid response.");
         });
     }
 }
