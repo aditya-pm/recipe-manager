@@ -1,0 +1,59 @@
+POST http://localhost:8000/extract-recipe
+Content-Type: application/json
+
+{
+    "youtube_url": "https://youtu.be/nq9WnmCGoFQ?si=LGuar0y8fgYALLn2",
+    "categories": [
+        "Appetizers",
+        "Beverages",
+        "Breads",
+        "Breakfast",
+        "Main Dishes",
+        "Pasta & Noodles",
+        "Rice & Grains",
+        "Soups & Stews",
+        "Salads",
+        "Sandwiches & Wraps",
+        "Sauces & Condiments",
+        "Side Dishes",
+        "Desserts"
+    ],
+    "tags": [
+        "Indian",
+        "South Indian",
+        "North Indian",
+        "Chinese",
+        "Italian",
+        "Mexican",
+        "Thai",
+        "Japanese",
+        "Mediterranean",
+        "American",
+
+        "Vegetarian",
+        "Vegan",
+        "Gluten-Free",
+        "Dairy-Free",
+        "High-Protein",
+        "Low-Carb",
+
+        "Grilled",
+        "Baked",
+        "Fried",
+        "Roasted",
+        "Steamed",
+        "Pressure Cooker",
+        "Air Fryer",
+        "Slow Cooker",
+
+        "Spicy",
+        "Sweet",
+        "Savory",
+        "Tangy",
+        "Creamy",
+
+        "Easy",
+        "Medium",
+        "Hard"
+    ]
+}
