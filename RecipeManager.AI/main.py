@@ -61,6 +61,12 @@ def extract_recipe(request: YoutubeRequest) -> CreateRecipeRequest:
         raise
     except Exception as e:
         print(e)
+        if "503" in str(e):
+            raise HTTPException(
+                status_code=503,
+                detail="Gemini is currently overloaded. Please try again later."
+            )
+
         raise HTTPException(
             status_code=500,
             detail=str(e)

@@ -1,6 +1,8 @@
-import { ADD_RECIPE_URL, LOOKUP_URL } from "./config.js";
+import { ADD_RECIPE_URL, BASE_URL, LOOKUP_URL } from "./config.js";
 
 // DOM REFERENCES
+const youtubeUrlInput = document.getElementById("youtube-url");
+const extractRecipeBtn = document.getElementById("extract-btn");
 const addRecipeForm = document.getElementById("add-recipe-form");
 const recipeNameTextField = document.getElementById("recipe-name");
 const categoriesInputContainer = document.getElementById(
@@ -92,6 +94,46 @@ addRecipeForm.addEventListener("submit", async (event) => {
     alert(isEditMode ? "Recipe updated!" : "Recipe created!");
   } catch (error) {
     console.error(error);
+  }
+});
+
+extractRecipeBtn.addEventListener("click", async () => {
+  try {
+    extractRecipeBtn.disabled = true;
+    extractRecipeBtn.textContent = "Extracting...";
+
+    const response = await fetch(`${LOOKUP_URL}extract`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        youtubeUrl: youtubeUrlInput.value,
+      }),
+    });
+
+    console.log(response.status);
+    console.log(response);
+    if (!response.ok) {
+      const error = await response.text();
+      console.log(error);
+      alert(error);
+      return;
+    }
+
+    const recipe = await response.json();
+    populateForm(recipe);
+    recipeNameTextField.scrollIntoView({
+      behavior: "smooth",
+    });
+
+  } catch (error) {
+    console.error(error);
+    alert("Failed to extract recipe.");
+
+  } finally {
+    extractRecipeBtn.disabled = false;
+    extractRecipeBtn.textContent = "Extract Recipe";
   }
 });
 
