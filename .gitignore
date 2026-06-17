@@ -63,3 +63,4 @@ Generated/
 .env.*
 
 .venv
+__pycache__
