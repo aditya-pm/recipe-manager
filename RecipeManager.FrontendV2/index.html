@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Manager | Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="navbar">
+      <h1 id="logo-title"><i class="fas fa-utensils"></i> Recipe Manager</h1>
+
+      <nav id="nav-pages">
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="categories.html">Categories</a>
+        <a href="tags.html">Tags</a>
+        <a href="favourites.html">Favourites</a>
+      </nav>
+
+      <div id="nav-actions">
+        <input type="text" placeholder="Search Recipes..." />
+        <button id="add-recipe-btn">+ Add Recipe</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="content-layout">
+        <div class="content-main">
+          <section class="hero">
+            <div class="hero-text">
+              <h2 class="hero-title">
+                Discover & organize <span>your favourite recipes</span>
+              </h2>
+              <p>
+                Keep all your recipes in one place and find the perfect meal for
+                any occasion
+              </p>
+              <button id="browse-recipe-btn">
+                <i class="fa-solid fa-magnifying-glass"></i> Browse Recipes
+              </button>
+            </div>
+            <img src="lol.png" alt="some-dish-image" />
+          </section>
+
+          <section class="categories">
+            <!-- <div class="category">Breakfast</div>
+        <div class="category">Lunch</div>
+        <div class="category">Dinner</div>
+        <div class="category">Snacks</div> -->
+          </section>
+
+          <section class="recent-recipes">
+            <h2>Recently Added</h2>
+
+            <!-- <div class="recipe-container">
+            <img src="lol" alt="recipe-image" />
+            <h3 class="recipe-name">Chicken Biriyani</h3>
+            <div class="recipe-categories">
+              <div class="recipe-category">cat 1</div>
+              <div class="recipe-category">cat 2</div>
+            </div>
+            <div class="recipe-tags">
+              <div class="recipe-tag">tag 1</div>
+              <div class="recipe-tag">tag 2</div>
+            </div>
+            <div class="recipe-actions"></div>
+          </div> -->
+          </section>
+        </div>
+
+        <aside class="content-sidebar">
+          <section class="ai-recipe">
+            <h2>AI Recipe Extractor</h2>
+            <p class="ai-desc">
+              Extract recipes from YouTube videos in seconds!
+            </p>
+            <img
+              id="ai-recipe-image"
+              src="lol"
+              alt="browser-youtube-window-magic-wand"
+            />
+            <div id="ai-actions">
+              <input type="text" placeholder="Paste YouTube URL here..." />
+              <button>Extract Recipe</button>
+            </div>
+            <p class="ai-info">
+              Our AI will automatically extract the ingredients, steps, and
+              more!
+            </p>
+          </section>
+
+          <section class="popular-categories-section">
+            <h2 class="popular-categories-title">Popular Categories</h2>
+            <ul id="popular-categories-list">
+              <!-- <li class="category-row"></li> -->
+            </ul>
+            <p>View all categories</p>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
