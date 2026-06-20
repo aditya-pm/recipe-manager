@@ -1,0 +1,48 @@
+/* CSS RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+body {
+    /* 100% of the viewport height */
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* CSS VARIABLES */
+:root {
+    --primary: #f97316;
+    --primary-light: #fed7aa;
+    --secondary: #0ba360;
+    --secondary-light: #c6f4e0;
+
+    --background: #fffaf5;
+    --surface: #fdfdfd;
+
+    --text: #1f2937;
+    --text-light: #6b7280;
+
+    --shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+    --radius: 10px;
+
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+
+    --max-width: 1200px;
+}
+
