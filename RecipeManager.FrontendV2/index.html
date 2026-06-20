@@ -12,6 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="category_styles.css">
   </head>
   <body>
     <header id="navbar">
@@ -34,6 +35,7 @@
     <main>
       <div class="content-layout">
         <div class="content-main">
+          <!-- HERO -->
           <section class="hero">
             <div class="hero-text">
               <h2 class="hero-title">
@@ -52,54 +54,204 @@
             </div>
           </section>
 
+          <!-- CATEGORY CHIPS -->
           <section class="categories">
-            <div class="category breakfast">
-              <span class="icon"><i class="fa-solid fa-bread-slice"></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-breakfast"><i class="fa-solid fa-bread-slice"></i></span>
               <span class="text">Breakfast</span>
             </div>
-            <div class="category lunch">
-              <span class="icon"><i class="fa-solid fa-bowl-food"></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-lunch"><i class="fa-solid fa-bowl-food"></i></span>
               <span class="text">Lunch</span>
             </div>
-            <div class="category dinner">
-              <span class="icon"><i class="fa-solid fa-pizza-slice"></i></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-dinner"><i class="fa-solid fa-pizza-slice"></i></span>
               <span class="text">Dinner</span>
             </div>
-            <div class="category snacks">
-              <span class="icon"><i class="fa-solid fa-cookie"></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-snacks"><i class="fa-solid fa-cookie"></i></span>
               <span class="text">Snacks</span>
             </div>
-            <div class="category desserts">
-              <span class="icon"><i class="fa-solid fa-cheese"></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-desserts"><i class="fa-solid fa-cheese"></i></span>
               <span class="text">Desserts</span>
             </div>
-            <div class="category beverages">
-              <span class="icon"><i class="fa-solid fa-beer-mug-empty"></i></span>
+            <div class="category-chip">
+              <span class="cat-icon cat-beverages"
+                ><i class="fa-solid fa-beer-mug-empty"></i
+              ></span>
               <span class="text">Beverages</span>
             </div>
-            <div id="view-more-categories" class="category"><i class="fa-solid fa-border-all"></i> View All</div>
+            <div id="view-more-categories" class="category-chip">
+              <i class="fa-solid fa-border-all"></i> View All
+            </div>
           </section>
 
+          <!-- RECENT RECIPES -->
           <section class="recent-recipes">
-            <h2><span><i class="fa-solid fa-bell-concierge"></i></span> Recently Added</h2>
+            <h2>
+              <span><i class="fa-solid fa-bell-concierge"></i></span> Recently
+              Added
+            </h2>
 
-            <!-- <div class="recipe-container">
-            <img src="lol" alt="recipe-image" />
-            <h3 class="recipe-name">Chicken Biriyani</h3>
-            <div class="recipe-categories">
-              <div class="recipe-category">cat 1</div>
-              <div class="recipe-category">cat 2</div>
+            <div class="recipes-grid">
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipe-container">
+                <img src="./assets/chicken_biriyani.jpg" alt="recipe-image" />
+                <div class="recipe-content">
+                  <h3 class="recipe-name">Chicken Biriyani</h3>
+                  <div class="recipe-categories">
+                    <div class="recipe-category">Rice & Grains</div>
+                  </div>
+                  <div class="recipe-tags">
+                    <div class="recipe-tag">Indian</div>
+                    <div class="recipe-tag">High-Protein</div>
+                    <div class="recipe-tag">Spicy</div>
+                  </div>
+                  <div class="recipe-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-bookmark"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="recipe-tags">
-              <div class="recipe-tag">tag 1</div>
-              <div class="recipe-tag">tag 2</div>
-            </div>
-            <div class="recipe-actions"></div>
-          </div> -->
           </section>
         </div>
 
         <aside class="content-sidebar">
+          <!-- AI RECIPE EXTRACTOR -->
           <section class="ai-recipe">
             <h2>
               <i class="fa-solid fa-wand-magic-sparkles"></i> AI Recipe
@@ -124,12 +276,44 @@
             </p>
           </section>
 
+          <!-- POPULAR CATEGORIES -->
           <section class="popular-categories-section">
             <h2 class="popular-categories-title">Popular Categories</h2>
             <ul id="popular-categories-list">
-              <!-- <li class="category-row"></li> -->
+              <li class="category-row">
+                <span class="cat-icon cat-dinner"><i class="fa-solid fa-pizza-slice"></i></span>
+                <span class="category-name">Dinner</span>
+                <span class="recipe-count">56</span>
+              </li>
+
+              <li class="category-row">
+                <span class="cat-icon cat-chicken"><i class="fa-solid fa-drumstick-bite"></i></span>
+                <span class="category-name">Chicken</span>
+                <span class="recipe-count">42</span>
+              </li>
+
+              <li class="category-row">
+                <span class="cat-icon cat-quick-easy"><i class="fa-solid fa-forward-fast"></i></span>
+                <span class="category-name">Quick & Easy</span>
+                <span class="recipe-count">38</span>
+              </li>
+
+              <li class="category-row">
+                <span class="cat-icon cat-indian"><i class="fa-solid fa-gopuram"></i></span>
+                <span class="category-name">Indian</span>
+                <span class="recipe-count">35</span>
+              </li>
+
+              <li class="category-row">
+                <span class="cat-icon cat-high-protein"><i class="fa-solid fa-dna"></i></span>
+                <span class="category-name">High-Protein</span>
+                <span class="recipe-count">28</span>
+              </li>
             </ul>
-            <p>View all categories</p>
+            <div class="view-more">
+              <p>View all categories</p>
+              <i class="fa-solid fa-angle-right"></i>
+            </div>
           </section>
         </aside>
       </div>
