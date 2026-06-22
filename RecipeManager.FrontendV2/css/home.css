@@ -1,6 +1,5 @@
 /* LAYOUT */
 body {
-    padding: 1rem;
     font-family: Inter, system-ui, sans-serif;
     background: var(--background);
     color: var(--text);
@@ -222,11 +221,13 @@ main {
 
 .recipe-categories {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
 .recipe-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
