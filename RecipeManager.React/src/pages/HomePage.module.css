@@ -1,0 +1,27 @@
+.homePage {
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    background-color: var(--surface);
+    border-radius: var(--radius);
+}
+
+.contentLayout {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contentMain {
+    flex: 3;
+
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+}
+
+.contentSidebar {
+    flex: 1;
+
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+}

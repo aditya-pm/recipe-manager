@@ -1,0 +1,37 @@
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.5rem 0.5rem;
+    box-shadow: 
+        0 1px 4px rgba(0,0,0,0.04),
+        0 2px 8px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
+
+    color: var(--text);
+    background-color: white;
+
+    font-weight: 600;
+}
+
+.chip:hover {
+    transform: translateY(-3px);
+}
+
+
+/* category icon styles */
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    /* override to change size */
+    font-size: 0.9rem;  /* icon size */
+    /* icon background circle size */
+    width: 1.6rem; 
+    height: 1.6rem;
+}

@@ -15,10 +15,15 @@ input {
     font: inherit;
 }
 
+/* ALL PAGES */
 body {
     /* 100% of the viewport height */
     min-height: 100vh;
     padding: 1rem;
+
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--background);
+    color: var(--text);
 }
 
 /* CSS VARIABLES */
@@ -44,69 +49,4 @@ body {
     --space-xl: 4rem;
 
     --max-width: 1200px;
-}
-
-/* category icon styles */
-.cat-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 50%;
-
-    /* override to change size */
-    font-size: 0.9rem;  /* icon size */
-    /* icon background circle size */
-    width: 1.6rem; 
-    height: 1.6rem;
-}
-
-.cat-breakfast {
-    color: #f97316;
-    background-color: #ffedd5;
-}
-
-.cat-lunch {
-    color: #3b82f6;
-    background: #dbeafe;
-}
-
-.cat-dinner {
-    color: #8b5cf6;
-    background: #ede9fe;
-}
-
-.cat-snacks {
-    color: #eab308;
-    background: #fef3c7;
-}
-
-.cat-desserts {
-    color: #ec4899;
-    background: #fce7f3;
-}
-
-.cat-beverages {
-    color: #10b981;
-    background: #d1fae5;
-}
-
-.cat-high-protein {
-    color: #ee2400;
-    background-color: #fbded5;
-}
-
-.cat-indian {
-    color: #ff6700;
-    background-color: #fae0cd;
-}
-
-.cat-chicken {
-    color: #b08968;
-    background-color: #e5d0be;
-}
-
-.cat-quick-easy {
-    color: #495057;
-    background-color: #dee2e6;
 }

@@ -1,8 +1,8 @@
-import "./HomePage.css";
+import styles from "./HomePage.module.css";
 import Hero from "../components/Hero/Hero";
 import Navbar from "../components/Navbar/Navbar";
 import AIRecipe from "../components/AIRecipe/AIRecipe";
-import RecipesContainer from "../components/Recipes/RecipesContainer";
+import RecentRecipes from "../components/Recipes/RecentRecipes";
 import FastCategories from "../components/Categories/FastCategories";
 import PopularCategories from "../components/Categories/PopularCategories";
 
@@ -11,25 +11,15 @@ function HomePage() {
     <>
       <Navbar />
 
-      <main>
-        <div className="content-layout">
-          <div className="content-main">
+      <main className={styles.homePage}>
+        <div className={styles.contentLayout}>
+          <div className={styles.contentMain}>
             <Hero />
             <FastCategories />
-
-            <section className="recent-recipes">
-              <h2>
-                <span>
-                  <i className="fa-solid fa-bell-concierge"></i>
-                </span>{" "}
-                Recently Added
-              </h2>
-
-              <RecipesContainer />
-            </section>
+            <RecentRecipes />
           </div>
 
-          <aside className="content-sidebar">
+          <aside className={styles.contentSidebar}>
             <AIRecipe />
             <PopularCategories />
           </aside>
