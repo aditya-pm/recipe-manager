@@ -1,7 +1,8 @@
 import HomePage from "./pages/HomePage";
+import RecipesPage from "./pages/RecipesPage";
 
 function App() {
-  return <HomePage />;
+  return <RecipesPage />;
 }
 
 export default App;
