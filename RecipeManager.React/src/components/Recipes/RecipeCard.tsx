@@ -1,13 +1,31 @@
 import styles from "./RecipeCard.module.css";
 
-function RecipeCard({ name, categories, tags, imageName = "placeholder_image.png" }) {
+type RecipeCardProps = {
+  name: string;
+  categories: string[];
+  tags: string[];
+  imageName?: string;
+};
+
+function RecipeCard({
+  name,
+  categories,
+  tags,
+  imageName = "placeholder_image.png",
+}: RecipeCardProps) {
   const image = "../../../assets/" + imageName;
 
   const categories_elements = categories.map((c) => (
-    <div key={c} className={styles.category}>{c}</div>
+    <div key={c} className={styles.category}>
+      {c}
+    </div>
   ));
 
-  const tags_elements = tags.map((t) => <div key={t} className={styles.tag}>{t}</div>);
+  const tags_elements = tags.map((t) => (
+    <div key={t} className={styles.tag}>
+      {t}
+    </div>
+  ));
 
   return (
     <div className={styles.container}>

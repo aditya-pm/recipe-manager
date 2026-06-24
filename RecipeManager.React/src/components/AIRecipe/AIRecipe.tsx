@@ -6,7 +6,7 @@ function AIRecipe() {
       <h2>
         <i className="fa-solid fa-wand-magic-sparkles"></i> AI Recipe Extractor
       </h2>
-      <p class="ai-desc">Extract recipes from YouTube videos in seconds!</p>
+      <p className="ai-desc">Extract recipes from YouTube videos in seconds!</p>
       <img
         id="ai-recipe-image"
         src="../assets/youtube_wand.png"

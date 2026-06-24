@@ -30,8 +30,8 @@ function RecipesPage() {
               <option value="tag3">Tag 3</option>
             </select>
             <div>
-              <i class="fa-solid fa-table-cells-large"></i>
-              <i class="fa-solid fa-bars"></i>
+              <i className="fa-solid fa-table-cells-large"></i>
+              <i className="fa-solid fa-bars"></i>
             </div>
           </div>
 
